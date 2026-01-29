@@ -14,7 +14,7 @@
 | 🧭 **Smooth Navigation** | Anchor-based section navigation |
 | 🎭 **Smooth Animations** | Framer Motion micro-interactions |
 | ✍️ **Type Animations** | Animated role text in the hero section |
-| 📬 **Contact Email** | “Send Message” opens a prefilled email to vk3266748@gmail.com |
+| 📬 **Contact Email** | “Send Message” opens a prefilled email to xxxxxxxx@gmail.com |
 | 📁 **Project Modals** | Detailed project modals with GitHub links |
 
 ---
