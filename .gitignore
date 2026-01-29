@@ -17,6 +17,9 @@ dist-ssr
 .env.*
 contact.config.json
 
+# CV file
+Vinit_fullstack_CV.pdf
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

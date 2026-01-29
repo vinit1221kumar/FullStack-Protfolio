@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const email = import.meta.env.VITE_CONTACT_EMAIL || "";
+  const cvPath = import.meta.env.VITE_CV_PATH || "/Vinit_fullstack_CV.pdf";
 
   const navItems = [
     { label: "Home", href: "#home" },
@@ -77,7 +78,7 @@ const Navbar = () => {
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center gap-4">
           <motion.a
-            href="/Vinit_fullstack_CV.pdf"
+            href={cvPath}
             download
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
