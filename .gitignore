@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Contact/mail local config
+.env
+.env.*
+contact.config.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

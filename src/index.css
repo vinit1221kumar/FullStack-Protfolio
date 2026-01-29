@@ -2,132 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 🌊 Bubble Animation */
-.bubble-bg {
-  position: relative;
-  overflow: hidden;
-  background: black;
-  min-height: 100vh;
-  z-index: 0;
+/* ✨ Global Styles */
+* {
+  scroll-behavior: smooth;
 }
 
-.bubble {
-  position: absolute;
-  bottom: -100px;
-  width: 80px;
-  height: 80px;
-  background: white;
-  border-radius: 50%;
-  animation: rise 6s infinite ease-in;
-  opacity: 0.25;
-  filter: blur(4px);
-  z-index: 0;
+body {
+  background: #0f172a;
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
-.bubble:nth-child(1) {
-  left: 10%;
-  width: 100px;
-  height: 100px;
-  animation-delay: 0s;
-}
-.bubble:nth-child(2) {
-  left: 30%;
-  width: 120px;
-  height: 120px;
-  animation-delay: 2s;
-}
-.bubble:nth-child(3) {
-  left: 50%;
-  width: 70px;
-  height: 70px;
-  animation-delay: 4s;
-}
-.bubble:nth-child(4) {
-  left: 70%;
-  width: 90px;
-  height: 90px;
-  animation-delay: 1s;
-}
-.bubble:nth-child(5) {
-  left: 85%;
-  width: 110px;
-  height: 110px;
-  animation-delay: 3s;
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-@keyframes rise {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0.4;
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Smooth transitions */
+@layer components {
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
   }
-  100% {
-    transform: translateY(-150vh) scale(1.2);
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
     opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* ✨ White Star Twinkle */
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.2;
-    transform: scale(1);
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.5);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
   }
 }
 
-.animate-twinkle {
-  animation: twinkle 3s infinite ease-in-out;
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
 }
 
-/* 🔴 Red Star Twinkle */
-@keyframes twinkle-red {
-  0%,
-  100% {
-    opacity: 0.2;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.4);
-  }
-}
-
-.animate-twinkle-red {
-  animation: twinkle-red 4s infinite ease-in-out;
-}
-
-/* 🌠 Shooting Star */
-@keyframes shooting-star {
-  0% {
-    transform: translate(0, 0) scaleX(1);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-    transform: translate(500px, 200px) scaleX(1.5);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(600px, 250px) scaleX(1.8);
-  }
-}
-
-.animate-shooting-star {
-  animation: shooting-star 5s linear infinite;
-  width: 100px;
-  height: 2px;
-  background: white;
-  box-shadow: 0 0 6px 2px white;
-  position: absolute;
-  top: 10%;
-  left: -100px;
-  transform: rotate(45deg);
-  opacity: 0;
+.animate-glow {
+  animation: glow 2s infinite;
 }

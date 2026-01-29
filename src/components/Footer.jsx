@@ -1,94 +1,81 @@
 import React from "react";
-import {
-  FaFacebook,
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
+  const socialLinks = [
+    { icon: FaGithub, url: "https://github.com/vinit1221kumar", label: "GitHub" },
+    { icon: FaLinkedin, url: "https://linkedin.com/in/vinit-kumar-singh", label: "LinkedIn" },
+  ];
+
   return (
-    <footer className="relative bg-black text-white py-6">
-      {/* ✨ Sparkling Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-black/50"></div>
-        {[...Array(300)].map((_, i) => (
-          <div
-            key={i}
-            className={`absolute w-1 h-1 rounded-full ${
-              Math.random() < 0.2
-                ? "bg-red-500 animate-twinkle-red"
-                : "bg-white animate-twinkle"
-            }`}
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="container relative z-10 mx-auto px-8 md:px-16 lg:px-24">
-        <div className="flex flex-col md:flex-row md:space-x-12 items-center mb-3">
-          <div className="flex-1 mb-4 md:mb-0 backdrop-blur-sm bg-white/5 p-6 rounded-xl">
-            <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-              Vinit Kumar Singh
-            </h3>
-            <p className="text-gray-400">
-              Creative Full-Stack Developer from India, crafting modern web and
-              software solutions with precision and passion.
+    <footer className="relative bg-gradient-to-b from-slate-950 to-slate-900 border-2 m-6 rounded-2xl py-12" style={{ borderImage: 'linear-gradient(135deg, rgb(168,85,247), rgb(236,72,153), rgb(168,85,247)) 1' }}>
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-3 gap-12 mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-bold text-white mb-2">VKS</h3>
+            <p className="text-slate-400">
+              Full-stack developer <span className="text-blue-400 font-semibold">crafting modern web solutions</span> with <span className="text-cyan-300 font-semibold">clean code</span> and <span className="text-blue-400 font-semibold">beautiful designs</span>.
             </p>
-          </div>
-          <div className="flex-1 w-full"></div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="text-lg font-semibold text-blue-400 mb-4">Quick Links</h4>
+            <ul className="space-y-2 text-slate-400">
+              <li><a href="#home" className="hover:text-blue-400 transition-colors">Home</a></li>
+              <li><a href="#about" className="hover:text-blue-400 transition-colors">About</a></li>
+              <li><a href="#project" className="hover:text-blue-400 transition-colors">Projects</a></li>
+              <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
+            </ul>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="text-lg font-semibold text-cyan-300 mb-4">Connect</h4>
+            <div className="flex gap-4">
+              {socialLinks.map((link, index) => {
+                const Icon = link.icon;
+                return (
+                  <motion.a
+                    key={index}
+                    href={link.url}
+                    whileHover={{ scale: 1.2, y: -5 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg flex items-center justify-center text-slate-400 hover:text-blue-400 border border-slate-700 hover:border-blue-400/50 transition-all duration-300"
+                    title={link.label}
+                  >
+                    <Icon size={20} />
+                  </motion.a>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
 
-        <div className="border-t border-gray-600 pt-3 flex flex-col md:flex-row justify-between items-center backdrop-blur-sm bg-white/5 p-4 rounded-xl mt-3">
-          <p className="text-gray-400">
-            &copy; {new Date().getFullYear()} Vinit. All rights reserved.
-          </p>
-          <div className="flex space-x-6 my-4 md:my-0">
-            <a
-              href="#"
-              className="text-gray-400 hover:text-green-400 transform hover:scale-125 transition-all"
-            >
-              <FaFacebook size={20} />
-            </a>
-            <a
-              href="https://www.instagram.com/vinitsingh4652?igsh=MW96MXE3bjUycW50bA=="
-              className="text-gray-400 hover:text-green-400 transform hover:scale-125 transition-all"
-            >
-              <FaInstagram size={20} />
-            </a>
-            <a
-              href="www.linkedin.com/in/vinit-kumar-singh"
-              className="text-gray-400 hover:text-green-400 transform hover:scale-125 transition-all"
-            >
-              <FaLinkedin size={20} />
-            </a>
-            <a
-              href="https://github.com/vinit1221kumar"
-              className="text-gray-400 hover:text-green-400 transform hover:scale-125 transition-all"
-            >
-              <FaGithub size={20} />
-            </a>
-          </div>
-          <div className="flex space-x-4">
-            <a
-              href="#"
-              className="text-gray-400 hover:text-green-400 transition-colors"
-            >
-              Privacy
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-green-400 transition-colors"
-            >
-              Terms of Service
-            </a>
-          </div>
-        </div>
+        <motion.div
+          className="border-t border-slate-800 pt-8 text-center text-slate-500"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <p>&copy; {new Date().getFullYear()} <span className="text-blue-400 font-semibold">Vinit Kumar Singh</span>. All rights reserved.</p>
+          <p className="text-sm mt-2">Designed & Built with <span className="text-red-500">❤️</span> using <span className="text-cyan-300 font-semibold">React</span> & <span className="text-blue-400 font-semibold">Framer Motion</span></p>
+        </motion.div>
       </div>
     </footer>
   );
