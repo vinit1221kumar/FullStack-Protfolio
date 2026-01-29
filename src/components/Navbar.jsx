@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const email = import.meta.env.VITE_CONTACT_EMAIL || "";
-  const cvPath = import.meta.env.VITE_CV_PATH || "/Vinit_fullstack_CV.pdf";
+  const cvPath = import.meta.env.VITE_CV_PATH";
 
   const navItems = [
     { label: "Home", href: "#home" },
