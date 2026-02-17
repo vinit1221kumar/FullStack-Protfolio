@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,7 +76,7 @@ const Navbar = () => {
           ))}
         </motion.div>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons - Desktop */}
         <div className="hidden md:flex items-center gap-4">
           <motion.a
             href={cvPath}
@@ -103,7 +104,58 @@ const Navbar = () => {
             </motion.button>
           </motion.a>
         </div>
+
+        {/* Mobile Menu Button */}
+        <motion.button
+          className="md:hidden p-2 text-slate-300 hover:text-white"
+          onClick={() => setIsOpen(!isOpen)}
+          whileTap={{ scale: 0.95 }}
+        >
+          {isOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+        </motion.button>
       </div>
+
+      {/* Mobile Menu */}
+      <motion.div
+        className="md:hidden bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-700"
+        initial={{ height: 0, opacity: 0 }}
+        animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        style={{ overflow: "hidden" }}
+      >
+        <motion.div className="px-6 py-4 space-y-3">
+          {navItems.map((item) => (
+            <motion.a
+              key={item.label}
+              href={item.href}
+              className="block text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium"
+              onClick={() => setIsOpen(false)}
+              whileHover={{ x: 5 }}
+            >
+              {item.label}
+            </motion.a>
+          ))}
+          <motion.div className="flex flex-col gap-3 pt-4 border-t border-slate-700 mt-4">
+            <motion.a
+              href={cvPath}
+              download
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.button className="w-full px-4 py-2 border-2 border-blue-400 text-blue-400 font-semibold rounded-lg hover:bg-blue-400/10 transition-all duration-200">
+                Download CV
+              </motion.button>
+            </motion.a>
+            <motion.a
+              href={email ? `mailto:${email}` : "#"}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.button className="w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-slate-950 font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transition-shadow duration-200">
+                Get in Touch
+              </motion.button>
+            </motion.a>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </motion.nav>
   );
 };
